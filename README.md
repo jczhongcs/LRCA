@@ -9,6 +9,7 @@ LRCA takes residue level embeddings from the pretrained ESM 2 model and applies 
 LRCA mainly consists of the following two modules:
 
 1.Global semantics branch (Global Semantics): It takes the residue-level embeddings produced by a pretrained protein language model (ESM-2) as the base representation.
+
 2.The LocalRelation module models feature relationships between adjacent residues, producing residue representations enriched with local cooperative information
 
 LRCA was evaluated on the HGBME dataset, achieving an AUPRC improvement from 0.790 to 0.824 under 5-fold cross-validation; when selecting the best fold by AUPRC, the AUPRC increased from 0.804 to 0.845.
