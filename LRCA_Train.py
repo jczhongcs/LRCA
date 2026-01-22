@@ -1,4 +1,3 @@
-# tmx_train.py
 import logging
 import os
 import time
@@ -11,11 +10,9 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import f1_score
 
 from early_stopping import EarlyStopping
-import tmxLoss
-import tmx_dataset
-import tmx_models
-import tmx_model_2
-import tmx_models3
+import Loss
+import LRCA_Dataset
+import LRCA_models
 logger = logging.getLogger("Train")
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
@@ -187,11 +184,9 @@ if __name__ == "__main__":
         logger.info(f"Fold {i + 1} train pos={pos}, neg={neg}")
 
 
-        model = tmx_models3.DNNPredictor(
+        model = LRCA_models.DNNPredictor(
             vec_dim=1280,
             hidden_size=[512, 128],
-
-
             conv_channels=64,
             conv_kernel=7,
             local_num_layers=2,
@@ -211,7 +206,7 @@ if __name__ == "__main__":
         ).to(DEVICE)
 
         loss_ce = nn.CrossEntropyLoss()
-        loss_center = tmxLoss.CenterLoss(num_classes=2, feat_dim=32, device=DEVICE)
+        loss_center = Loss.CenterLoss(num_classes=2, feat_dim=32, device=DEVICE)
 
         optimizer_model = Adam(model.parameters(), lr=LR, weight_decay=1e-4)
         optimizer_center = Adam(loss_center.parameters(), lr=LR * 0.5)
@@ -219,7 +214,7 @@ if __name__ == "__main__":
         stopper = EarlyStopping(
             mode="higher",
             patience=5,
-            filename=f"../models/TMX/BEAUT_ESM2Conv_fold_{i + 1}.pth",
+            filename=f"../models/LRCA_fold_{i + 1}.pth",
         )
 
         scheduler = ReduceLROnPlateau(
@@ -254,3 +249,4 @@ if __name__ == "__main__":
                 break
 
             scheduler.step(f1)
+
