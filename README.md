@@ -40,7 +40,7 @@ CSV_PATH = Path(r"path\to\sequence_dataset_v3_substrate_pocket_aug.csv")
 LMDB_PATH = Path(r"path\to\esm2_conv_lmdb_v3\features.lmdb")
 ```Python
 
-## Environment configuration
+### Environment configuration
 
 
 
