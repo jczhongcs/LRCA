@@ -5,7 +5,9 @@ LRCA takes residue level embeddings from the pretrained ESM 2 model and applies 
   <br>
   <em>Figure 1: The workflow of PED metric calculation.</em>
 </p>
+
 ##  Key Features
+
 LRCA mainly consists of the following two modules:
 
 1.Global semantics branch (Global Semantics): It takes the residue-level embeddings produced by a pretrained protein language model (ESM-2) as the base representation.
