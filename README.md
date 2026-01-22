@@ -38,9 +38,9 @@ Open LRCA_embed_esm2.py and update the Configuration section to point to your ac
 ```Python
 CSV_PATH = Path(r"path\to\sequence_dataset_v3_substrate_pocket_aug.csv")
 LMDB_PATH = Path(r"path\to\esm2_conv_lmdb_v3\features.lmdb")
-```Python
+```
 
-### Environment configuration
-
+### 2. Run Script
+If this is you first time to run tran LRCA_train.py
 
 
