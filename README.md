@@ -15,3 +15,10 @@ LRCA mainly consists of the following two modules:
 2.The LocalRelation module models feature relationships between adjacent residues, producing residue representations enriched with local cooperative information
 
 LRCA was evaluated on the HGBME dataset, achieving an AUPRC improvement from 0.790 to 0.824 under 5-fold cross-validation; when selecting the best fold by AUPRC, the AUPRC increased from 0.804 to 0.845.
+
+##  Usage
+
+### 1. Data Preparation
+We use the HGBME dataset introduced by BEAUT, and the original data can be obtained from  [HGBME](https://zenodo.org/records/15388149). Here, we only provide the data relevant to the LRCA experiments.
+
+### 2. Run Script
