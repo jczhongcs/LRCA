@@ -26,8 +26,21 @@ Open LRCA_embed_esm2.py and update the Configuration section to point to your ac
 
 ```python
 CSV_PATH = Path(r"Data\sequence_dataset_v3_substrate_pocket_aug.csv")
-TRAIN_NEG_FASTA = Path(r"Data\non_test_set_neg_all.fasta")
-TEST_NEG_FASTA  = Path(r"Data\test_set_neg_all.fasta")
-POS_FASTA       = Path(r"Data\positive_seqs_v3_substrate_pocket_sim_aug_v3_unique.fasta")
+TRAIN_NEG_FASTA = Path(r"path\to\non_test_set_neg_all.fasta")
+TEST_NEG_FASTA  = Path(r"path\to\test_set_neg_all.fasta")
+POS_FASTA       = Path(r"path\to\positive_seqs_v3_substrate_pocket_sim_aug_v3_unique.fasta")
 ```
+The output feature may be large, please reserve sufficient memory space.
+
+#### B. Training and testing dataset settings
+Open LRCA_embed_esm2.py and update the Configuration section to point to your actual file paths:
+
+```Python
+CSV_PATH = Path(r"path\to\sequence_dataset_v3_substrate_pocket_aug.csv")
+LMDB_PATH = Path(r"path\to\esm2_conv_lmdb_v3\features.lmdb")
+```Python
+
+## Environment configuration
+
+
 
