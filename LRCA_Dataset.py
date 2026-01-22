@@ -9,8 +9,8 @@ import torch
 import pandas as pd
 from torch.utils.data import Dataset
 
-CSV_PATH = Path(r"E:\pycharm\study_ESM\BEAUT-main\data\sequence_dataset_v3_substrate_pocket_aug.csv")
-LMDB_PATH = Path(r"E:\pycharm\study_ESM\BEAUT-main\data\tmx\esm2_conv_lmdb_v3\features.lmdb")
+CSV_PATH = Path(r"Data\sequence_dataset_v3_substrate_pocket_aug.csv")
+LMDB_PATH = Path(r"Data\esm2_conv_lmdb_v3\features.lmdb")
 
 LMDB_READAHEAD = True
 LMDB_LOCK = False
@@ -22,7 +22,6 @@ class LMDBESM2FeatureStore:
     LMDB feature store
       key: header (utf-8)
       val: bytes
-        支持两种写入格式：
           A) pickle.dumps(item)
           B) torch.save(item)
       item = {"vec": Tensor[D], "tok": Tensor[K,D], "mask": Tensor[K], "L": int}
@@ -65,7 +64,6 @@ class LMDBESM2FeatureStore:
                 return item
         except Exception:
             pass
-        #  torch.save 格式（兼容原文模型）
         buf = io.BytesIO(raw)
         item = torch.load(buf, map_location="cpu")
         if not isinstance(item, dict):
@@ -84,8 +82,6 @@ class LMDBESM2FeatureStore:
             raise KeyError(f"Header not found in LMDB: {header}")
 
         item = self._decode_item(raw)
-
-        # 最小校验与规范化
         if "vec" not in item or not torch.is_tensor(item["vec"]):
             raise KeyError(f"LMDB item missing Tensor 'vec' for header={header}")
         item["vec"] = item["vec"].contiguous()
@@ -103,8 +99,6 @@ class LMDBESM2FeatureStore:
             item["mask"] = item["mask"].contiguous()
 
         return item
-
-    # 多进程 DataLoader：env 不能被 pickle
     def __getstate__(self):
         d = self.__dict__.copy()
         d["_env"] = None
@@ -113,11 +107,11 @@ class LMDBESM2FeatureStore:
 
 class SequenceDataset(Dataset):
     """
-    训练用 Dataset：
+    Train Dataset：
 
     mode:
-      - "vec":  返回 (vec, y, header)
-      - "conv": 返回 ((vec, tok, mask), y, header)
+      - "vec":  Return (vec, y, header)
+      - "conv": Return ((vec, tok, mask), y, header)
     """
 
     def __init__(self, fold: int, mode: str = "conv"):
@@ -169,3 +163,4 @@ class SequenceDataset(Dataset):
 
     def __len__(self):
         return len(self.dataset)
+
