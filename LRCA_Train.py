@@ -135,8 +135,8 @@ if __name__ == "__main__":
     NUM_WORKERS_TRAIN = 2
     NUM_WORKERS_EVAL = 1
     PREFETCH_FACTOR = 2
-    os.makedirs("../models", exist_ok=True)
-    os.makedirs("../models", exist_ok=True)
+    os.makedirs("models", exist_ok=True)
+    os.makedirs("models", exist_ok=True)
     if DEVICE.type == "cuda":
         torch.backends.cudnn.benchmark = True
 
@@ -249,4 +249,5 @@ if __name__ == "__main__":
                 break
 
             scheduler.step(f1)
+
 
