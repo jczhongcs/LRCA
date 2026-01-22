@@ -1,4 +1,3 @@
-# tmx_dataset.py
 import io
 import pickle
 from pathlib import Path
@@ -18,14 +17,6 @@ LMDB_MAX_READERS = 2048
 
 
 class LMDBESM2FeatureStore:
-    """
-    LMDB feature store
-      key: header (utf-8)
-      val: bytes
-          A) pickle.dumps(item)
-          B) torch.save(item)
-      item = {"vec": Tensor[D], "tok": Tensor[K,D], "mask": Tensor[K], "L": int}
-    """
 
     def __init__(self):
         if not LMDB_PATH.exists():
@@ -163,4 +154,5 @@ class SequenceDataset(Dataset):
 
     def __len__(self):
         return len(self.dataset)
+
 
