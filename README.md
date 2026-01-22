@@ -22,7 +22,7 @@ LRCA was evaluated on the HGBME dataset, achieving an AUPRC improvement from 0.7
 We use the HGBME dataset introduced by BEAUT, and the original data can be obtained from  [HGBME](https://zenodo.org/records/15388149). Here, we only provide the data relevant to the LRCA experiments. 
 
 #### A. Protein sequence features were obtained using ESM2.
-Open 'LRCA_embed_esm2.py' and update the Configuration section to point to your actual file paths:
+Open `LRCA_embed_esm2.py` and update the Configuration section to point to your actual file paths:
 
 ```python
 CSV_PATH = Path(r"Data\sequence_dataset_v3_substrate_pocket_aug.csv")
@@ -33,7 +33,7 @@ POS_FASTA       = Path(r"path\to\positive_seqs_v3_substrate_pocket_sim_aug_v3_un
 The output feature may be large, please reserve sufficient memory space.
 
 #### B. Training and testing dataset settings
-Open 'LRCA_embed_esm2.py` and update the Configuration section to point to your actual file paths:
+Open `LRCA_embed_esm2.py` and update the Configuration section to point to your actual file paths:
 
 ```Python
 CSV_PATH = Path(r"path\to\sequence_dataset_v3_substrate_pocket_aug.csv")
