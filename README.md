@@ -3,7 +3,7 @@ LRCA takes residue level embeddings from the pretrained ESM 2 model and applies 
 <p align="center">
   <img src="Fig/LRCA.png" alt="Overview of LRCA" width="600">
   <br>
-  <em>Overview of LRCA.</em>
+  <em>Figure 1: Overview of LRCA.</em>
 </p>
 
 ##  Key Features
