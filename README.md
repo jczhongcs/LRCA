@@ -41,6 +41,7 @@ LMDB_PATH = Path(r"path\to\esm2_conv_lmdb_v3\features.lmdb")
 ```
 
 ### 2. Run Script
-If this is you first time to run tran LRCA_train.py
+Run `LRCA_Train.py` to train the LRCA model. This step requires the sequence embedding data `data/seq_embeddings_v3_substrate_pocket_aug.pt`. We provided the trained models in the `models` folder.
 
+Run `LRCA_Test.py` to calculate the evaluation metrics for the LRCA model on the balanced test set.The results will be saved at `data/LRCA_eval_metrics_balanced.csv`.
 
